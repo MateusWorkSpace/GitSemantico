@@ -11,7 +11,7 @@ interface RepoSelectionPageProps {
 }
 
 const RepoCard: React.FC<{ repo: GitHubRepo; onSelect: () => void; }> = ({ repo, onSelect }) => (
-  <div className="bg-white/5 border border-white/10 rounded-lg p-5 flex flex-col justify-between transition-transform hover:scale-105 hover:border-[#666666]/50">
+  <div className="bg-white/5 border border-white/10 rounded-lg p-5 flex flex-col justify-between transition-transform hover:scale-105 hover:border-primary/50">
     <div>
       <div className="flex items-center mb-2">
         <span className="font-bold text-gray-300">{repo.name}</span>
@@ -21,7 +21,7 @@ const RepoCard: React.FC<{ repo: GitHubRepo; onSelect: () => void; }> = ({ repo,
     </div>
     <button
       onClick={onSelect}
-      className="mt-4 w-full bg-white/10 text-white font-semibold py-2 rounded-md hover:bg-[#666666]/30 transition-colors"
+      className="mt-4 w-full bg-white/10 text-white font-semibold py-2 rounded-md hover:bg-primary/30 transition-colors"
     >
       Analisar
     </button>
@@ -55,7 +55,7 @@ const RepoSelectionPage: React.FC<RepoSelectionPageProps> = ({ user, token, onRe
     <div className="min-h-screen p-4 sm:p-6 lg:p-8">
       <header className="max-w-4xl mx-auto flex justify-between items-center mb-10">
           <div className="flex items-center gap-4">
-              <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full border-2 border-[#666666]"/>
+              <img src={user.avatar_url} alt={user.login} className="w-12 h-12 rounded-full border-2 border-primary"/>
               <div>
                   <p className="text-gray-400 text-sm">Logado como</p>
                   <h1 className="text-xl font-bold text-white">{user.name || user.login}</h1>
@@ -78,7 +78,7 @@ const RepoSelectionPage: React.FC<RepoSelectionPageProps> = ({ user, token, onRe
                 placeholder="Filtrar repositórios..."
                 value={searchTerm}
                 onChange={e => setSearchTerm(e.target.value)}
-                className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-4 py-2 text-white placeholder-gray-500 focus:ring-[#666666] focus:border-[#666666]"
+                className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-4 py-2 text-white placeholder-gray-500 focus:ring-primary focus:border-primary"
             />
         </div>
 

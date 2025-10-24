@@ -19,7 +19,7 @@ const CommandOutput: React.FC<CommandOutputProps> = ({ command, onClose }) => {
     };
 
     return (
-        <div className="mt-4 p-4 bg-gray-900/50 rounded-lg border border-[#666666]/30">
+        <div className="mt-4 p-4 bg-gray-900/50 rounded-lg border border-primary/30">
             <div className="flex justify-between items-center mb-2">
                 <h3 className="text-sm font-semibold text-gray-300">Comando para seu terminal:</h3>
                 <button onClick={onClose} className="text-gray-500 hover:text-white">&times;</button>
@@ -91,7 +91,7 @@ const CommitForm: React.FC<{repoName: string}> = ({ repoName }) => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div>
             <label htmlFor="commit-type" className="block text-sm font-medium text-gray-300 mb-1">--type</label>
-            <select id="commit-type" value={type} onChange={e => setType(e.target.value as CommitType)} className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:ring-[#666666] focus:border-[#666666]">
+            <select id="commit-type" value={type} onChange={e => setType(e.target.value as CommitType)} className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white focus:ring-primary focus:border-primary">
               {Object.values(CommitType).map(t => (
                 <option key={t} value={t}>{COMMIT_TYPE_DETAILS[t].label}</option>
               ))}
@@ -99,11 +99,11 @@ const CommitForm: React.FC<{repoName: string}> = ({ repoName }) => {
           </div>
           <div>
             <label htmlFor="commit-scope" className="block text-sm font-medium text-gray-300 mb-1">--scope <span className="text-gray-500">(opcional)</span></label>
-            <input type="text" id="commit-scope" value={scope} onChange={e => setScope(e.target.value)} placeholder="ex: api, auth" className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-[#666666] focus:border-[#666666]"/>
+            <input type="text" id="commit-scope" value={scope} onChange={e => setScope(e.target.value)} placeholder="ex: api, auth" className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-primary focus:border-primary"/>
           </div>
            <div className="md:col-span-1 flex items-end">
              <div className="flex items-center h-full pb-2">
-                <input id="breaking-change" type="checkbox" checked={breaking} onChange={e => setBreaking(e.target.checked)} className="h-4 w-4 rounded border-gray-500 bg-gray-700 text-[#666666] focus:ring-[#555555]" />
+                <input id="breaking-change" type="checkbox" checked={breaking} onChange={e => setBreaking(e.target.checked)} className="h-4 w-4 rounded border-gray-500 bg-gray-700 text-primary focus:ring-primary-darker" />
                 <label htmlFor="breaking-change" className="ml-2 block text-sm font-medium text-gray-300">--breaking-change (!)</label>
              </div>
            </div>
@@ -111,12 +111,12 @@ const CommitForm: React.FC<{repoName: string}> = ({ repoName }) => {
         <div>
           <label htmlFor="commit-message" className="block text-sm font-medium text-gray-300 mb-1">--message</label>
           <div className="relative">
-            <textarea id="commit-message" value={message} onChange={e => {setMessage(e.target.value); setGeneratedCommand(null);}} rows={3} placeholder="Descreva suas mudanças..." className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-[#666666] focus:border-[#666666] resize-none"></textarea>
+            <textarea id="commit-message" value={message} onChange={e => {setMessage(e.target.value); setGeneratedCommand(null);}} rows={3} placeholder="Descreva suas mudanças..." className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-primary focus:border-primary resize-none"></textarea>
             <button
                 type="button"
                 onClick={handleSuggestion}
                 disabled={isSuggesting || !message}
-                className="absolute bottom-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-[#666666]/20 text-gray-300 text-xs font-semibold rounded-md hover:bg-[#666666]/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
+                className="absolute bottom-2 right-2 flex items-center gap-1.5 px-2 py-1 bg-primary/20 text-gray-300 text-xs font-semibold rounded-md hover:bg-primary/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
             >
               <SparklesIcon className={`w-4 h-4 ${isSuggesting ? 'animate-spin' : ''}`} />
               {isSuggesting ? 'Sugerindo...' : 'Sugerir com IA'}
@@ -124,7 +124,7 @@ const CommitForm: React.FC<{repoName: string}> = ({ repoName }) => {
           </div>
         </div>
         <div className="text-right">
-          <button type="submit" className="px-6 py-2 bg-[#666666] text-gray-100 font-bold rounded-md hover:bg-[#555555] transition-colors transform hover:scale-105">Gerar Comando</button>
+          <button type="submit" className="px-6 py-2 bg-primary text-gray-100 font-bold rounded-md hover:bg-primary-darker transition-colors transform hover:scale-105">Gerar Comando</button>
         </div>
       </form>
       {generatedCommand && <CommandOutput command={generatedCommand} onClose={() => setGeneratedCommand(null)} />}

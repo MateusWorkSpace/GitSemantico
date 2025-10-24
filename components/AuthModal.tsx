@@ -50,14 +50,14 @@ const AuthModal: React.FC<AuthModalProps> = ({ onLogin, onClose }) => {
                         value={token}
                         onChange={e => setToken(e.target.value)}
                         placeholder="cole seu token aqui"
-                        className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-[#666666] focus:border-[#666666]"
+                        className="w-full bg-gray-700/50 border border-gray-600 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:ring-primary focus:border-primary"
                         aria-label="GitHub Personal Access Token"
                     />
                     {error && <p className="text-red-400 text-sm mt-2">{error}</p>}
                     <button 
                         type="submit" 
                         disabled={isLoading}
-                        className="mt-6 w-full bg-[#666666] text-gray-100 font-bold py-2.5 rounded-md hover:bg-[#555555] transition-colors disabled:opacity-50 disabled:cursor-wait"
+                        className="mt-6 w-full bg-primary text-gray-100 font-bold py-2.5 rounded-md hover:bg-primary-darker transition-colors disabled:opacity-50 disabled:cursor-wait"
                     >
                         {isLoading ? 'Verificando...' : 'Entrar'}
                     </button>
