@@ -1,3 +1,7 @@
+![Platform Jumper Gameplay](https://i.imgur.com/3auqlyj.png) <!-- Replace with an actual GIF of your gameplay! -->
+
+**Created by [MateusDang](https://github.com/MateusWorkSpace)**
+
 # Git Semântico: O Futuro do Controle de Versão
 
 [![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)](https://reactjs.org/)
