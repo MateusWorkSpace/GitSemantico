@@ -2,13 +2,17 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { AIGeneratedCommit } from '../types';
 
-if (!process.env.API_KEY) {
-  // In a real app, this would be a fatal error.
-  // For this demo, we'll log a warning.
-  console.warn("API_KEY environment variable not set. Gemini API calls will fail.");
-}
+// Singleton instance of the AI client, initialized lazily.
+let aiInstance: GoogleGenAI | null = null;
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+function getAiClient(): GoogleGenAI {
+  if (!aiInstance) {
+    // This will throw a descriptive error if the API key is missing,
+    // which will be caught by the calling function.
+    aiInstance = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
+  }
+  return aiInstance;
+}
 
 const commitSuggestionSchema = {
     type: Type.OBJECT,
@@ -32,6 +36,7 @@ const commitSuggestionSchema = {
 
 export const suggestCommitDetails = async (rawMessage: string): Promise<AIGeneratedCommit> => {
     try {
+        const ai = getAiClient();
         const response = await ai.models.generateContent({
             model: "gemini-2.5-flash",
             contents: `Analise a seguinte descrição de mudança e estruture-a como um commit semântico. A mensagem deve ser concisa e em português. Descrição: "${rawMessage}"`,
