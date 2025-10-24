@@ -1,0 +1,5 @@
+{
+  "name": "Semantic Git",
+  "description": "A conceptual application demonstrating how structured, semantic commits could be integrated directly into Git, enabling powerful history analysis and automated changelog generation. This UI simulates this future Git workflow.",
+  "requestFramePermissions": []
+}
